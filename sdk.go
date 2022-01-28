@@ -15,7 +15,7 @@ type Sdk struct {
 	blockStoreClient proto.BlockStoreClient
 }
 
-func NewSdk(url string) (*Sdk, error) {
+func NewSdkFromUrl(url string) (*Sdk, error) {
 	parsedUrl, err := neturl.Parse(url)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse url")
@@ -25,7 +25,7 @@ func NewSdk(url string) (*Sdk, error) {
 	return sdk, nil
 }
 
-func NewSdkFromToken(url string, token string) *Sdk {
+func NewSdk(url string, token string) *Sdk {
 	return &Sdk{url: url, token: token}
 }
 

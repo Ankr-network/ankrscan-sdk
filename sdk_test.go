@@ -10,18 +10,11 @@ import (
 	"testing"
 )
 
-func TestNewSdk(t *testing.T) {
-	sdk, err := NewSdk("https://localhost:8058/ankrscan/0367deca75d17c37af98e9dd9130a47c1e4a8a5a1e562ff8f179d36018dc1b58")
-	require.NoError(t, err)
-	require.NotNil(t, sdk)
-	require.Equal(t, "0367deca75d17c37af98e9dd9130a47c1e4a8a5a1e562ff8f179d36018dc1b58", sdk.Token())
-}
-
 func TestConsumer(t *testing.T) {
-	sdk := NewSdkFromToken("localhost:8058", "0367deca75d17c37af98e9dd9130a47c1e4a8a5a1e562ff8f179d36018dc1b58")
+	sdk := NewSdk("localhost:6565", "")
 	blockProcessor := &TestBlockProcessor{miners: make(map[string]int)}
 	progressReporter := &TestProgressReporter{}
-	consumer := sdk.NewConsumer(&ConsumerConfig{ConsumerId: "filtering-consumer-0", BlockchainId: "eth", BatchSize: 50, StartBlock: 14076289 - 5000, BlockProcessor: blockProcessor, ProgressReporter: progressReporter})
+	consumer := sdk.NewConsumer(&ConsumerConfig{ConsumerId: "filtering-consumer-0", BlockchainId: "eth", BatchSize: 50, StartBlock: 14000144, BlockProcessor: blockProcessor, ProgressReporter: progressReporter})
 	ctx := context.Background()
 	for {
 		err := consumer.Process(ctx)
