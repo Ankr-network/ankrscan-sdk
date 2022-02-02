@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/hex"
 	"fmt"
-	proto "github.com/Ankr-network/ankrscan-proto-contract"
+	proto "github.com/Ankr-network/ankrscan-proto-contract/generated/go"
 	"github.com/stretchr/testify/require"
 	"log"
 	"testing"
