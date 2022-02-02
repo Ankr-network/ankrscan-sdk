@@ -3,13 +3,13 @@ module ankrscan-sdk
 go 1.17
 
 require (
-	github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220125172511-49f3960f459a
+	github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220202102414-bbc4cfd68b0d
 	github.com/pkg/errors v0.9.1
 	google.golang.org/grpc v1.43.0
 )
 
 require (
-	github.com/davecgh/go-spew v1.1.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect

@@ -2,7 +2,7 @@ package ankrscan
 
 import (
 	"context"
-	proto "github.com/Ankr-network/ankrscan-proto-contract"
+	proto "github.com/Ankr-network/ankrscan-proto-contract/generated/go"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 	neturl "net/url"
