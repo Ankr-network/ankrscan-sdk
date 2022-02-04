@@ -3,7 +3,7 @@ package ankrscan
 import (
 	"context"
 	"fmt"
-	proto "github.com/Ankr-network/ankrscan-proto-contract/generated/go"
+	"github.com/Ankr-network/ankrscan-proto-contract/go/proto"
 	"math"
 	"time"
 )
