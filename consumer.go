@@ -171,32 +171,32 @@ func (c *Consumer) LastCommit(ctx context.Context) (*proto.LastCommitReply, erro
 	return reply, nil
 }
 
-func (c *Consumer) Process(ctx context.Context) error {
+func (c *Consumer) Process(ctx context.Context) ([]*proto.Block, error) {
 	timings := &Timings{}
 	start := time.Now().UnixNano()
 	reply, err := c.Next(ctx)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if len(reply.Blocks) == 0 {
 		time.Sleep(time.Second)
-		return nil
+		return reply.Blocks, nil
 	}
 	timings.fetch = time.Duration(time.Now().UnixNano() - start)
 	start = time.Now().UnixNano()
 	if err = c.Config().BlockProcessor.Process(reply.Blocks, reply.IsReorg); err != nil {
-		return err
+		return nil, err
 	}
 	timings.process = time.Duration(time.Now().UnixNano() - start)
 	start = time.Now().UnixNano()
 	if err = c.Commit(ctx, reply.Commit); err != nil {
-		return err
+		return nil, err
 	}
 	timings.commit = time.Duration(time.Now().UnixNano() - start)
 	if c.Config().ProgressReporter != nil {
 		if err = c.Config().ProgressReporter.Report(reply.Blocks, reply.IsReorg, timings, reply.Latest.BlockHeight-reply.Commit.BlockHeight, reply.Latest); err != nil {
-			return err
+			return nil, err
 		}
 	}
-	return nil
+	return reply.Blocks, nil
 }
