@@ -11,15 +11,24 @@ import (
 )
 
 func TestConsumer(t *testing.T) {
-	sdk := NewSdk("localhost:6565", "")
+	sdk, err := NewSdk("http://65.108.100.113")
+	require.NoError(t, err)
 	blockProcessor := &TestBlockProcessor{miners: make(map[string]int)}
 	progressReporter := &TestProgressReporter{}
-	consumer := sdk.NewConsumer(&ConsumerConfig{ConsumerId: "filtering-consumer-0", BlockchainId: "eth", BatchSize: 50, StartBlock: 14000144, BlockProcessor: blockProcessor, ProgressReporter: progressReporter})
+	consumer := sdk.NewConsumer(&ConsumerConfig{ConsumerId: "filtering-consumer-0", BlockchainId: "BSC", BatchSize: 50, StartBlock: 100, BlockProcessor: blockProcessor, ProgressReporter: progressReporter})
 	ctx := context.Background()
 	for {
 		err := consumer.Process(ctx)
 		require.NoError(t, err)
 	}
+}
+
+func TestLatest(t *testing.T) {
+	sdk, err := NewSdk("http://65.108.100.113")
+	require.NoError(t, err)
+	header, err := sdk.LatestBlockHeader(context.Background(), "BSC")
+	require.NoError(t, err)
+	log.Println(header.BlockHashAsHash().String())
 }
 
 type TestBlockProcessor struct {

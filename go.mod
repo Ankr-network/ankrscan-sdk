@@ -3,7 +3,7 @@ module github.com/Ankr-network/ankrscan-sdk
 go 1.17
 
 require (
-	github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220204094909-96269ff5d294
+	github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220207145433-022be810e4ba
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.7.0
 	google.golang.org/grpc v1.44.0

@@ -4,18 +4,18 @@ import (
 	"context"
 	"github.com/Ankr-network/ankrscan-proto-contract/go/proto"
 	"github.com/pkg/errors"
-	"google.golang.org/grpc"
 	neturl "net/url"
 	"path"
 )
 
 type Sdk struct {
-	url              string
-	token            string
+	url   string
+	token string
+
 	blockStoreClient proto.BlockStoreClient
 }
 
-func NewSdkFromUrl(url string) (*Sdk, error) {
+func NewSdk(url string) (*Sdk, error) {
 	parsedUrl, err := neturl.Parse(url)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse url")
@@ -23,10 +23,6 @@ func NewSdkFromUrl(url string) (*Sdk, error) {
 	_, token := path.Split(parsedUrl.Path)
 	sdk := &Sdk{url: url, token: token}
 	return sdk, nil
-}
-
-func NewSdk(url string, token string) *Sdk {
-	return &Sdk{url: url, token: token}
 }
 
 func (s *Sdk) Token() string {
@@ -39,7 +35,7 @@ func (s *Sdk) Url() string {
 
 func (s *Sdk) BlockStoreClient() (proto.BlockStoreClient, error) {
 	if s.blockStoreClient == nil {
-		conn, err := grpc.Dial(s.url, grpc.WithInsecure(), grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(104857600)))
+		conn, err := Dial(s.url)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to connect to block store")
 		}

@@ -47,6 +47,8 @@ github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220204094841-abdd9ee6b6
 github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220204094841-abdd9ee6b6ff/go.mod h1:CadeqlslOTQYGLGrW5S4ompNf4FXbKHahP0ugwuNORs=
 github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220204094909-96269ff5d294 h1:PJboQQFVn1MP1u3Sne3+GfNn03ifu1woEUNPMN42jaI=
 github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220204094909-96269ff5d294/go.mod h1:CadeqlslOTQYGLGrW5S4ompNf4FXbKHahP0ugwuNORs=
+github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220207145433-022be810e4ba h1:MR6cQbRaWFMbKmNLC332BMj0c9tACWnzUo1AlwIo3+A=
+github.com/Ankr-network/ankrscan-proto-contract v0.0.0-20220207145433-022be810e4ba/go.mod h1:CadeqlslOTQYGLGrW5S4ompNf4FXbKHahP0ugwuNORs=
 github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiUVpqIlpz/HKHylF4=
 github.com/Azure/azure-pipeline-go v0.2.2/go.mod h1:4rQ/NZncSvGqNkkOsNpOU1tgoNuIlp9AfUH5G1tvCHc=
 github.com/Azure/azure-storage-blob-go v0.7.0/go.mod h1:f9YQKtsG1nMisotuTPpO0tjNuEjKRYAcJU8/ydDI++4=
