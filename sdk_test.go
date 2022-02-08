@@ -11,7 +11,7 @@ import (
 )
 
 func TestConsumer(t *testing.T) {
-	sdk, err := NewSdk("http://65.108.100.113")
+	sdk, err := NewGrpcSdk("localhost:6565")
 	require.NoError(t, err)
 	blockProcessor := &TestBlockProcessor{miners: make(map[string]int)}
 	progressReporter := &TestProgressReporter{}
@@ -24,7 +24,7 @@ func TestConsumer(t *testing.T) {
 }
 
 func TestLatest(t *testing.T) {
-	sdk, err := NewSdk("http://65.108.100.113")
+	sdk, err := NewSdk("http://localhost:8080")
 	require.NoError(t, err)
 	header, err := sdk.LatestBlockHeader(context.Background(), "BSC")
 	require.NoError(t, err)
