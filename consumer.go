@@ -176,6 +176,7 @@ func (c *Consumer) Process(ctx context.Context) error {
 	start := time.Now().UnixNano()
 	reply, err := c.Next(ctx)
 	if err != nil {
+		time.Sleep(time.Second)
 		return err
 	}
 	if len(reply.Blocks) == 0 {
